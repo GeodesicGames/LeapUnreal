@@ -66,7 +66,9 @@ FQuat FLeapUtility::ConvertLeapQuatToFQuat(const LEAP_QUATERNION& Quaternion)
 	Quat.Z = Quaternion.z;
 	Quat.W = Quaternion.w;
 
-	return Quat * FLeapUtility::LeapRotationOffset;
+	// QUAT CRASH BUG
+	//return Quat * FLeapUtility::LeapRotationOffset;
+	return Quat * FQuat(FRotator(90.f, 0.f, 180.f));
 }
 
 FVector AdjustForLeapFacing(FVector In)
