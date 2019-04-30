@@ -9,16 +9,14 @@ Find more Unreal Engine Plugins and projects at [www.geodesic.games](http://www.
 
 This fork is to remove the VR Mode and create a reliable plugin meant for Leap Motion Desktop Mode. Also fixed common crashes and bugs present when using Desktop Mode.
 
-# Changes
-
-1. Remove VR Mode. (Plugin only works for with the Leap Motion facing up on the table)
-2. Fix engine crash when returning quaternion rotation offset. (Returns static quaternion value)
-
-
 You can use convenience blueprints to just select and play or use a custom approach via blueprints or C++. See relevant sections for details
 
 See [unreal thread](https://forums.unrealengine.com/showthread.php?49107-Plugin-Leap-Motion-Event-Driven) for version downloads and development updates.
 
+# Changes
+
+1. Remove VR Mode. (Plugin only works for with the Leap Motion facing up on the table)
+2. Fix engine crash when returning quaternion rotation offset. (Returns static quaternion value)
 
 # Setup
 
