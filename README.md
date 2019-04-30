@@ -3,7 +3,17 @@ LeapUnreal
 
 [![GitHub release](https://img.shields.io/github/release/leapmotion/leapunreal.svg)](https://github.com/leapmotion/leapunreal/releases)
 
-The official [Leap Motion](http://www.leapmotion.com) plugin for the Unreal Engine 4. 
+Fork of the official [Leap Motion](http://www.leapmotion.com) plugin for the Unreal Engine 4. Forked by [Geodesic Games](http://www.geodesic.games/).
+
+Find more Unreal Engine Plugins and projects at [www.geodesic.games](http://www.geodesic.games/)
+
+This fork is to remove the VR Mode and create a reliable plugin meant for Leap Motion Desktop Mode. Also fixed common crashes and bugs present when using Desktop Mode.
+
+# Changes
+
+1. Remove VR Mode. (Plugin only works for with the Leap Motion facing up on the table)
+2. Fix engine crash when returning quaternion rotation offset. (Returns static quaternion value)
+
 
 You can use convenience blueprints to just select and play or use a custom approach via blueprints or C++. See relevant sections for details
 
