@@ -1,28 +1,24 @@
-LeapUnreal (Desktop Mode Only)
+LeapUnreal
 ====================
 
 [![GitHub release](https://img.shields.io/github/release/leapmotion/leapunreal.svg)](https://github.com/leapmotion/leapunreal/releases)
 
-Fork of the official [Leap Motion](http://www.leapmotion.com) plugin for the Unreal Engine 4. Forked by [Geodesic Games](http://www.geodesic.games/).
-
-Find more Unreal Engine Plugins and projects at [www.geodesic.games](http://www.geodesic.games/)
-
-This fork is to remove the VR Mode and create a reliable plugin meant for Leap Motion Desktop Mode. Also fixed common crashes and bugs present when using Desktop Mode.
+The official [Leap Motion](http://www.leapmotion.com) plugin for the Unreal Engine 4. 
 
 You can use convenience blueprints to just select and play or use a custom approach via blueprints or C++. See relevant sections for details
 
-See [unreal thread](https://forums.unrealengine.com/showthread.php?49107-Plugin-Leap-Motion-Event-Driven) for version downloads and development updates.
+### Problems & Questions
+Reach out at https://forums.leapmotion.com/
 
-# Changes
+## Multiple Devices
 
-1. Remove VR Mode. (Plugin only works for with the Leap Motion facing up on the table)
-2. Fix engine crash when returning quaternion rotation offset. (Returns static quaternion value)
+If you want to use multiple devices at the same time, see the experimental https://github.com/leapmotion/LeapUnreal/tree/feat-multi-device branch and https://github.com/leapmotion/LeapUnreal/releases/tag/v3.4.0 release.
 
 # Setup
 
 1. Ensure you have the latest [Leap Motion driver installed](https://developer.leapmotion.com/get-started). This plugin requires v4 SDK tracking or newer.
 2. Create new or open a project. 
-3. Download [latest release](https://github.com/leapmotion/LeapUnreal/releases) (make sure to use the .7z link)
+3. Download [latest release](https://github.com/leapmotion/LeapUnreal/releases) (make sure to use the .7z link and https://www.7-zip.org/ to unzip it)
 4. Drag and drop Plugins into your project root folder
 5. The plugin should be enabled and ready to use, if not enable it.
 
@@ -31,7 +27,16 @@ See [unreal thread](https://forums.unrealengine.com/showthread.php?49107-Plugin-
 
 # How to use it - Convenience Rigged Pawn
 
-### Desktop Mode - Example Actor
+Use one of the following methods
+
+### Option 1. VR Mode- Example Pawn
+After the plugin is enabled you can change your default pawn to *LeapHandsPawn* or place it in the level with auto-posses set to player 0. If you're using the leap with the HTC Vive or Oculus Rift, it expects the pawn camera to be at the floor which is it's tracking origin. 
+
+[![VR Quickstart, Click me to see higher resolution](http://i.imgur.com/EATrySQ.gif)](https://youtu.be/qRo-2-Qe4bs)
+
+*NB: click the gif for a higher resolution video*
+
+### Option 2. Desktop Mode - Example Actor
 After the plugin is enabled, find *Leap Desktop Actor* in your content browser (plugin content enabled) and place it anywhere in your scene. When you hit play your hands will be tracked from the actor center with the sensor expected to be facing upwards.
 
 ## Gestures

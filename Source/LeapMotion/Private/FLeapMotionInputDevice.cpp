@@ -110,7 +110,7 @@ void FLeapMotionInputDevice::OnConnect()
 	//if we have a valid engine pointer and hmd update the device type
 	if (GEngine && GEngine->XRSystem.IsValid())
 	{
-		// ALWAYS DESKTOP MODE
+		// GEODESIC. Always desctop mode
 		DefaultOptions.Mode = ELeapMode::LEAP_MODE_DESKTOP;
 	}
 	else
@@ -243,7 +243,7 @@ void FLeapMotionInputDevice::OnPolicy(const uint32_t CurrentPolicies)
 	}
 	if (CurrentPolicies & eLeapPolicyFlag_OptimizeHMD)
 	{
-		// ALWAYS DESKTOP MODE
+		// GEODESIC. ALWAYS DESKTOP MODE
 		UpdatedMode = ELeapMode::LEAP_MODE_DESKTOP;
 		Flags.Add(ELeapPolicyFlag::LEAP_POLICY_BACKGROUND_FRAMES);
 	}
@@ -911,18 +911,14 @@ void FLeapMotionInputDevice::SetOptions(const FLeapOptions& InOptions)
 	{
 		HMDType = GEngine->XRSystem->GetSystemName();
 	}
-	else
-	{
-		Options.Mode = ELeapMode::LEAP_MODE_DESKTOP;
-	}
 
-	// ALWAYS IN DESKTOP MODE
+	// Geodesic. ALWAYS IN DESKTOP MODE
 	//Did we change the mode?
-	/*if (Options.Mode != InOptions.Mode)
-	{
-		bool bOptimizeForHMd = InOptions.Mode == ELeapMode::LEAP_MODE_VR;
-		SetLeapPolicy(LEAP_POLICY_OPTIMIZE_HMD, bOptimizeForHMd);
-	}*/
+	// if (Options.Mode != InOptions.Mode || Options.Mode == LEAP_MODE_UNSET)
+	// {
+	// 	bool bOptimizeForHMd = InOptions.Mode == ELeapMode::LEAP_MODE_VR;
+	// 	SetLeapPolicy(LEAP_POLICY_OPTIMIZE_HMD, bOptimizeForHMd);
+	// }
 
 	//Set main options
 	Options = InOptions;
