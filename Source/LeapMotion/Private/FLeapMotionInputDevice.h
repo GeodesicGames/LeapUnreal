@@ -166,8 +166,10 @@ private:
 	int32 BodyStateDeviceId;
 	FBodyStateDeviceConfig Config;
 
+#if !UE_BUILD_SHIPPING
 	//LiveLink
 	TSharedPtr<FLeapLiveLinkProducer> LiveLink;
+#endif
 
 	//Convenience Converters - Todo: wrap into separate class?
 	void SetBSFingerFromLeapDigit(class UBodyStateFinger* Finger, const FLeapDigitData& LeapDigit);

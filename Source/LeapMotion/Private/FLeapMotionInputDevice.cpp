@@ -335,9 +335,11 @@ FLeapMotionInputDevice::FLeapMotionInputDevice(const TSharedRef< FGenericApplica
 	EKeys::AddKey(FKeyDetails(EKeysLeap::LeapGrabR, LOCTEXT("LeapGrabR", "Leap (R) Grab"), FKeyDetails::GamepadKey));
 
 	//LiveLink startup
+#if !UE_BUILD_SHIPPING
 	LiveLink = MakeShareable(new FLeapLiveLinkProducer());
 	LiveLink->Startup();
 	LiveLink->SyncSubjectToSkeleton(IBodyState::Get().SkeletonForDevice(BodyStateDeviceId));
+#endif
 
 	//Image support
 	LeapImageHandler = MakeShareable(new FLeapImage);
@@ -349,7 +351,9 @@ FLeapMotionInputDevice::FLeapMotionInputDevice(const TSharedRef< FGenericApplica
 FLeapMotionInputDevice::~FLeapMotionInputDevice()
 {
 	//LiveLink cleanup
+#if !UE_BUILD_SHIPPING
 	LiveLink->ShutDown();
+#endif
 
 	ShutdownLeap();
 }
@@ -826,6 +830,7 @@ void FLeapMotionInputDevice::UpdateInput(int32 DeviceID, class UBodyStateSkeleto
 	}
 
 	//LiveLink logic
+#if !UE_BUILD_SHIPPING
 	if (LiveLink->HasConnection())
 	{
 		if (bTrackedBonesChanged)
@@ -834,6 +839,7 @@ void FLeapMotionInputDevice::UpdateInput(int32 DeviceID, class UBodyStateSkeleto
 		}
 		LiveLink->UpdateFromBodyState(Skeleton);
 	}
+#endif
 }
 
 void FLeapMotionInputDevice::OnDeviceDetach()
